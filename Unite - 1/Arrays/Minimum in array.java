@@ -1,3 +1,6 @@
+
+
+
 public static void minimumInArray(int N, int arr[]){
       
       int min = arr[0];
