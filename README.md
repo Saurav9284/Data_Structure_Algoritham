@@ -1,1 +1,1 @@
-All DSA Questions from Scratch are available here - cuurntly working
+All DSA Questions from Scratch are available here - cuurently working
