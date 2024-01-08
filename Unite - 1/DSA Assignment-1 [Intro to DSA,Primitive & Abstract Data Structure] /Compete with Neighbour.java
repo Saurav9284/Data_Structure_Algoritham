@@ -19,8 +19,4 @@ public static void solve(int n,int[] arr){
     
     System.out.println(count);
   }
- Overview
- Announcements
- Problems
- Submissions
- Rankings
+
