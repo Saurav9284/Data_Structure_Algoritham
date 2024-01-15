@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+public class MinJumpsToReachTop {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Number of test cases
+        int T = scanner.nextInt();
+
+        for (int t = 0; t < T; t++) {
+            // Number of steps
+            int n = scanner.nextInt();
+
+            // Array to store values of each step
+            int[] steps = new int[n];
+
+            // Reading values for each step
+            for (int i = 0; i < n; i++) {
+                steps[i] = scanner.nextInt();
+            }
+
+            // Calculate and print the minimum number of jumps
+            int result = calculateMinJumps(steps);
+            System.out.println(result);
+        }
+    }
+
+    private static int calculateMinJumps(int[] steps) {
+        int n = steps.length;
+
+        // Check if the first step is unreachable
+        if (steps[0] <= 0) {
+            return -1;
+        }
+
+        // Initialize variables
+        int currentStep = 0;
+        int jumps = 0;
+
+        // Iterate through the steps
+        while (currentStep < n - 1) {
+            // If the current step is unreachable, return -1
+            if (steps[currentStep] == 0) {
+                return -1;
+            }
+
+            // Jump to the maximum reachable step from the current step
+            int maxReach = currentStep + steps[currentStep];
+            int nextStep = currentStep;
+
+            for (int i = currentStep + 1; i <= Math.min(n - 1, maxReach); i++) {
+                if (i + steps[i] > maxReach) {
+                    maxReach = i + steps[i];
+                    nextStep = i;
+                }
+            }
+
+            // Update current step and increment jumps
+            currentStep = nextStep;
+            jumps++;
+        }
+
+        return jumps;
+    }
+}
